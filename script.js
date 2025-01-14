@@ -26,11 +26,11 @@ function getDetails() {
             }
         })
         .catch(error => console.error("Error fetching API: ", error));
-      } else {
+      } 
+    } else {
         console.log("Invalid URL parameters");
         var elem = document.getElementById("project");
         elem.textContent = "Error: Invalid URL parameters";
         elem.style.color = "red";
-      }
     }
   }
