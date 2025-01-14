@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", getDetails);
 
 function getDetails() {
     const urlParams = new URLSearchParams(window.location.search);
-    const s = urlParams.get('s') || "TEMPLATE/V1004";
+    const s = urlParams.get('s');
 
     console.log(s);
     
@@ -28,6 +28,9 @@ function getDetails() {
         .catch(error => console.error("Error fetching API: ", error));
       } else {
         console.log("Invalid URL parameters");
+        var elem = document.getElementById("project");
+        elem.textContent = "Error: Invalid URL parameters";
+        elem.style.color = "red";
       }
     }
   }
