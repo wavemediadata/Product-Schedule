@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", getDetails);
 function getDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const s = urlParams.get('s');
+    var da = "";
 
     console.log(s);
     
@@ -15,10 +16,13 @@ function getDetails() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
+                da = data.details
+                console.log(data.details);
                 document.getElementById("project").textContent = data.details.project || "N/A";
                 document.getElementById("partNumber").textContent = data.details.partNumber || "N/A";
                 document.getElementById("itemName").textContent = data.details.itemName || "N/A";
                 document.getElementById("itemDescription").textContent = data.details.itemDescription || "N/A";
+                document.getElementById("projectLogo").src = data.details.logo || "";
             } else {
                 var elem = document.getElementById("project");
                 elem.textContent = "Error: " + data.message;
